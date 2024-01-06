@@ -1,6 +1,7 @@
 package kz.singularity.solidbankapp1.service;
 
 import kz.singularity.solidbankapp1.model.Account;
+import kz.singularity.solidbankapp1.model.AccountDeposit;
 import kz.singularity.solidbankapp1.model.AccountType;
 import kz.singularity.solidbankapp1.model.AccountWithdraw;
 
@@ -11,4 +12,6 @@ public interface AccountListingService {
     AccountWithdraw getClientWithdrawAccount(String clientID, String accountID);
     List<Account> getClientAccounts(String clientID);
     List<Account> getClientAccountByType(String clientID, AccountType accountType);
+
+
 }

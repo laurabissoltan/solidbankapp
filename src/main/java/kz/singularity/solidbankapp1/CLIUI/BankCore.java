@@ -2,10 +2,15 @@ package kz.singularity.solidbankapp1.CLIUI;
 
 import kz.singularity.solidbankapp1.model.AccountType;
 import kz.singularity.solidbankapp1.service.AccountCreationService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 public class BankCore {
     private static long id = 1;
     private long lastAccountNumber = 1;
+
+    @Autowired
     AccountCreationService accountCreation;
 
     public BankCore(AccountCreationService accountCreation) {

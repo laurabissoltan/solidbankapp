@@ -2,27 +2,28 @@ package kz.singularity.solidbankapp1.service.impl;
 
 import kz.singularity.solidbankapp1.dao.AccountDAO;
 import kz.singularity.solidbankapp1.model.Account;
+import kz.singularity.solidbankapp1.model.AccountDeposit;
 import kz.singularity.solidbankapp1.model.AccountType;
 import kz.singularity.solidbankapp1.model.AccountWithdraw;
 import kz.singularity.solidbankapp1.service.AccountListingService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class AccountListingServiceImpl implements AccountListingService {
-    AccountDAO accountDAO;
 
-    public AccountListingServiceImpl(AccountDAO accountDAO) {
-        this.accountDAO = accountDAO;
-    }
+public class AccountListingServiceImpl implements AccountListingService {
+    @Autowired
+    AccountDAO accountDAO;
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
-        return null;
+        return accountDAO.getClientAccount(clientID, accountID);
     }
 
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
-        return null;
+        return accountDAO.getClientWithdrawAccount(clientID, accountID);
     }
 
     @Override
@@ -32,6 +33,8 @@ public class AccountListingServiceImpl implements AccountListingService {
 
     @Override
     public List<Account> getClientAccountByType(String clientID, AccountType accountType) {
-        return null;
+        return accountDAO.getClientAccountsByType(clientID, accountType);
     }
+
+
 }

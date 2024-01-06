@@ -1,29 +1,31 @@
 package kz.singularity.solidbankapp1.CLIUI;
 
 import kz.singularity.solidbankapp1.model.AccountType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
-public class MyCLI implements CreateAccountOperationUI {
-    Scanner scanner;
 
-    MyCLI() {
-        this.scanner = new Scanner(System.in);
-    }
-    public MyCLI(Scanner scanner) {
-        this.scanner = scanner;
-    }
 
+@AllArgsConstructor
+@Getter
+public class MyCLI implements CreateAccountOperationUI, CLIUI, WithdrawDepositOperationCLIUI {
+
+    @Autowired
+    private Scanner scanner;
+
+    @Override
     public double requestClientAmount() {
-        return 0;
+        System.out.println("Type amount of money:");
+        return Double.parseDouble(this.scanner.nextLine());
     }
-
+    @Override
     public String requestClientAccountNumber() {
-        return null;
-    }
-
-    public Scanner getScanner() {
-        return scanner;
+        System.out.println("Type account ID:");
+        return this.scanner.nextLine();
     }
 
     @Override

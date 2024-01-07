@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
-
-
 @AllArgsConstructor
 @Getter
 public class MyCLI implements CreateAccountOperationUI, CLIUI, WithdrawDepositOperationCLIUI {
@@ -22,6 +20,7 @@ public class MyCLI implements CreateAccountOperationUI, CLIUI, WithdrawDepositOp
         System.out.println("Type amount of money:");
         return Double.parseDouble(this.scanner.nextLine());
     }
+
     @Override
     public String requestClientAccountNumber() {
         System.out.println("Type account ID:");
@@ -30,6 +29,14 @@ public class MyCLI implements CreateAccountOperationUI, CLIUI, WithdrawDepositOp
 
     @Override
     public AccountType requestAccountType() {
-        return AccountType.valueOf(scanner.nextLine());
+        String userInput = scanner.nextLine().toUpperCase();
+        //     return AccountType.valueOf(scanner.nextLine());
+        try {
+            return AccountType.valueOf(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: invalid account type. Please try again");
+            return null;
+        }
     }
 }
+

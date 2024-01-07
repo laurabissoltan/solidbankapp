@@ -1,5 +1,6 @@
 package kz.singularity.solidbankapp1.dao;
 
+import kz.singularity.solidbankapp1.CLIUI.BankCore;
 import kz.singularity.solidbankapp1.model.Account;
 import kz.singularity.solidbankapp1.model.AccountDeposit;
 import kz.singularity.solidbankapp1.model.AccountType;

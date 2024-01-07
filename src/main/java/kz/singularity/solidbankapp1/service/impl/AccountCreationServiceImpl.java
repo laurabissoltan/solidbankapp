@@ -17,14 +17,17 @@ public class AccountCreationServiceImpl implements AccountCreationService {
 
     @Override
     public void create(AccountType accountType, long bankID, String clientID, String accountID) {
+
+        String accountIDD = String.format("%03d%06d", bankID, Long.parseLong(accountID));
+
         switch(accountType) {
-            case CHECKING -> {accountDAO.createNewAccount(new CheckingAccount(accountType, accountID, clientID, 0.0, true ));
+            case CHECKING -> {accountDAO.createNewAccount(new CheckingAccount(accountType, accountIDD, clientID, 0.0, true ));
             }
-            case FIXED -> {accountDAO.createNewAccount(new FixedAccount(accountType, accountID, clientID, 0.0, false ));
+            case FIXED -> {accountDAO.createNewAccount(new FixedAccount(accountType, accountIDD, clientID, 0.0, false ));
             }
-            case SAVING -> {accountDAO.createNewAccount(new SavingAccount(accountType, accountID, clientID, 0.0, true ));
+            case SAVING -> {accountDAO.createNewAccount(new SavingAccount(accountType, accountIDD, clientID, 0.0, true ));
             }
-            default -> throw new IllegalStateException("Unexpected value: " + accountType);
+            default -> System.out.println("Unexpected value: " + accountType);
         }
     }
 }

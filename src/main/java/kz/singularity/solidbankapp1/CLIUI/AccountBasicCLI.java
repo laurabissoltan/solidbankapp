@@ -16,8 +16,10 @@ public class AccountBasicCLI {
 
     public void createAccountRequest(String clientID) {
         AccountType accountType = this.createAccountOperationUI.requestAccountType();
-        bankCore.createNewAccount(accountType, clientID);
-        System.out.println("Bank account created successfully");
+        if(accountType != null) {
+            bankCore.createNewAccount(accountType, clientID);
+            System.out.println("Bank account created successfully");
+        }
     }
 
     public void getAccounts(String clientID) {

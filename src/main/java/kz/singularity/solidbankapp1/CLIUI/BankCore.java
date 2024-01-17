@@ -5,14 +5,16 @@ import kz.singularity.solidbankapp1.service.AccountCreationService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+
+import java.util.logging.Logger;
 
 
-
-
+@Component
 public class BankCore {
     private static long id = 1;
     private long lastAccountNumber = 1;
-
 
     AccountCreationService accountCreation;
 

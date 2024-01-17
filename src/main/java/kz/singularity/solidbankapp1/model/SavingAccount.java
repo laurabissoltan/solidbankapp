@@ -1,5 +1,8 @@
 package kz.singularity.solidbankapp1.model;
 
+import jakarta.persistence.Entity;
+
+
 public class SavingAccount extends AccountWithdraw {
 
     public SavingAccount(AccountType accountType, String id, String clientID, double balance, boolean withdrawAllowed) {

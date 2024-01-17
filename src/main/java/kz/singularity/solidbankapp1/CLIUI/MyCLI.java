@@ -4,16 +4,30 @@ import kz.singularity.solidbankapp1.model.AccountType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@AllArgsConstructor
-@Getter
+@Component
 public class MyCLI implements CreateAccountOperationUI, CLIUI, WithdrawDepositOperationCLIUI {
 
-    @Autowired
     private Scanner scanner;
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+
+    public MyCLI() {
+        this.scanner = new Scanner(System.in);
+    }
 
     @Override
     public double requestClientAmount() {

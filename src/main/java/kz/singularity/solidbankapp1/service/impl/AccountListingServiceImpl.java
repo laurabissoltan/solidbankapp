@@ -8,10 +8,13 @@ import kz.singularity.solidbankapp1.model.AccountWithdraw;
 import kz.singularity.solidbankapp1.service.AccountListingService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
+@Service
 public class AccountListingServiceImpl implements AccountListingService {
     @Autowired
     AccountDAO accountDAO;

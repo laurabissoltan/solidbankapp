@@ -1,3 +1,4 @@
+/*
 package kz.singularity.solidbankapp1.dao;
 
 import kz.singularity.solidbankapp1.CLIUI.BankCore;
@@ -8,11 +9,16 @@ import kz.singularity.solidbankapp1.model.AccountWithdraw;
 import kz.singularity.solidbankapp1.service.AccountListingService;
 import kz.singularity.solidbankapp1.service.impl.AccountCreationServiceImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-
+@Component
 public class MemoryAccountDAO implements AccountDAO{
 
     List <Account> accountList = new ArrayList<>();
@@ -63,13 +69,6 @@ public class MemoryAccountDAO implements AccountDAO{
         return null;
     }
 
-/*    @Override
-    public AccountDeposit getClientDepositAccount(String clientID, String accountID) {
-        for(Account account: accountList) {
-            if(account.getClientID().equals(clientID) && account.getId().equals(accountID) && account instanceof AccountWithdraw) {
-                return (AccountDeposit) account;
-            }
-        }
-        return null;
-    }*/
-}
+
+
+}*/

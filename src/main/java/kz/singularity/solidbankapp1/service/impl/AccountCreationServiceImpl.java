@@ -7,13 +7,21 @@ import kz.singularity.solidbankapp1.model.FixedAccount;
 import kz.singularity.solidbankapp1.model.SavingAccount;
 import kz.singularity.solidbankapp1.service.AccountCreationService;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
+@Service
+@Getter
 public class AccountCreationServiceImpl implements AccountCreationService {
 
-    @Autowired
+
     AccountDAO accountDAO;
+    @Autowired
+    public void setAccountDAO(AccountDAO accountDAO) {
+        this.accountDAO = accountDAO;
+    }
 
     @Override
     public void create(AccountType accountType, long bankID, String clientID, String accountID) {

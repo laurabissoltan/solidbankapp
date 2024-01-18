@@ -1,6 +1,5 @@
 package kz.singularity.solidbankapp1.CLIUI;
 
-import jakarta.persistence.*;
 import kz.singularity.solidbankapp1.dao.TransactionDAO;
 import kz.singularity.solidbankapp1.model.*;
 import kz.singularity.solidbankapp1.service.AccountDepositService;
@@ -20,14 +19,13 @@ public class TransactionDeposit {
     @Autowired
     TransactionDAO transactionDAO;
 
+    public void execute(Account accountDeposit, double amount) {
 
-    public void execute(AccountWithdraw accountWithdraw, double amount) {
-
-        accountDepositService.deposit(amount, accountWithdraw);
+        accountDepositService.deposit(amount, accountDeposit);
 
         Transaction transaction = new Transaction();
         transaction.setTransactionType(TransactionType.DEPOSIT);
-        transaction.setAccount(accountWithdraw);
+        transaction.setAccount(accountDeposit);
         transaction.setAmount(amount);
         transaction.setTransactionDate(new Date());
         transaction.setProcessed(true);
@@ -35,4 +33,5 @@ public class TransactionDeposit {
         transactionDAO.addTransaction(transaction);
 
     }
+
 }

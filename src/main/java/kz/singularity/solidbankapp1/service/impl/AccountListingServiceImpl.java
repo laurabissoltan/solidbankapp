@@ -2,13 +2,10 @@ package kz.singularity.solidbankapp1.service.impl;
 
 import kz.singularity.solidbankapp1.dao.AccountDAO;
 import kz.singularity.solidbankapp1.model.Account;
-import kz.singularity.solidbankapp1.model.AccountDeposit;
 import kz.singularity.solidbankapp1.model.AccountType;
 import kz.singularity.solidbankapp1.model.AccountWithdraw;
 import kz.singularity.solidbankapp1.service.AccountListingService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

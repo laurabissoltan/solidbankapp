@@ -6,16 +6,13 @@ import kz.singularity.solidbankapp1.model.CheckingAccount;
 import kz.singularity.solidbankapp1.model.FixedAccount;
 import kz.singularity.solidbankapp1.model.SavingAccount;
 import kz.singularity.solidbankapp1.service.AccountCreationService;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
 @Getter
 public class AccountCreationServiceImpl implements AccountCreationService {
-
 
     AccountDAO accountDAO;
     @Autowired

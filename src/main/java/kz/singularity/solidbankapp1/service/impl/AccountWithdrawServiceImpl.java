@@ -25,13 +25,15 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService {
     }
 
     @Override
-    public void withdraw(double amount, AccountWithdraw account) {
+    public void withdraw(double amount, Account account) {
         if(!account.getAccountType().equals(AccountType.FIXED) && account.getBalance() >= amount && account.getBalance() > 0) {
             account.setBalance(account.getBalance() - amount);
             accountDAO.updateAccount(account);
             System.out.println(amount + " transferred from account " + account.getId() + " successfully");
-        } else {
+        }
+        else if (account.getBalance() <= amount ){
             System.out.println("The withdrawal transaction has been declined due to insufficient money in your account.");
         }
+
     }
 }

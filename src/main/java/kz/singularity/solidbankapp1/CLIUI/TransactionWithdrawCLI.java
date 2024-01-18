@@ -6,7 +6,6 @@ import kz.singularity.solidbankapp1.model.AccountWithdraw;
 import kz.singularity.solidbankapp1.service.AccountListingService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import static kz.singularity.solidbankapp1.model.AccountType.*;
@@ -23,18 +22,18 @@ public class TransactionWithdrawCLI {
 
     public void withdrawMoney(String clientID) {
         String accountID = withdrawDepositOperationCLIUI.requestClientAccountNumber();
-        AccountWithdraw accountWithdraw = accountListing.getClientWithdrawAccount(clientID, accountID);
+        Account accountWithdraw = accountListing.getClientAccount(clientID, accountID);
 
-        if(accountWithdraw != null && accountWithdraw.getAccountType() != FIXED) {
-            Double amount = withdrawDepositOperationCLIUI.requestClientAmount();
-            transactionWithdraw.execute(accountWithdraw, amount);
+        if(accountWithdraw == null) {
+            System.out.println("Bank account with the given account ID was not found. Please try again");
         }
         else if (accountWithdraw.getAccountType() == FIXED) {
-                System.out.println("It is not allowed to withdraw money from a FIXED account");
-            }
-            else {
-                System.out.println("Bank account with the given account ID was not found. Please try again");
-                }
+            System.out.println("It is not allowed to withdraw money from a FIXED account");
+        }
+        else {
+            Double amount = withdrawDepositOperationCLIUI.requestClientAmount();
+            transactionWithdraw.execute((AccountWithdraw) accountWithdraw, amount);
         }
     }
+}
 

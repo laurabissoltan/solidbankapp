@@ -2,10 +2,8 @@ package kz.singularity.solidbankapp1.CLIUI;
 
 import kz.singularity.solidbankapp1.model.AccountType;
 import kz.singularity.solidbankapp1.service.AccountListingService;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @Getter

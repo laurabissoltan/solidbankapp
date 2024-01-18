@@ -18,8 +18,8 @@ import java.util.Date;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    private long transactionId;
+    @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)
     private Account account;
     @Enumerated(EnumType.STRING)
@@ -27,7 +27,7 @@ public class Transaction {
     private double amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date transactionDate;
-    @Column(name = "TRANSACTION_STATUS", nullable = false)
+    @Column(name = "transaction_status", nullable = false)
     private boolean isProcessed;
 
 }

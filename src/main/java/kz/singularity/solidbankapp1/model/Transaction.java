@@ -27,5 +27,7 @@ public class Transaction {
     private double amount;
     @Temporal(TemporalType.TIMESTAMP)
     private Date transactionDate;
+    @Column(name = "TRANSACTION_STATUS", nullable = false)
+    private boolean isProcessed;
 
 }

@@ -30,6 +30,7 @@ public class TransactionDAORepository implements TransactionDAO{
                     .transactionType(TransactionType.valueOf(resultSet.getString("transaction_type")))
                     .amount(resultSet.getDouble("amount"))
                     .transactionDate(resultSet.getTimestamp("transaction_date"))
+                    .isProcessed(resultSet.getBoolean("transaction_status"))
                     .build();
 
             return transaction;
@@ -40,14 +41,23 @@ public class TransactionDAORepository implements TransactionDAO{
 
     @Override
     public void addTransaction(Transaction transaction) {
-        String sql = "INSERT INTO Transaction (ACCOUNT_ID, TRANSACTION_TYPE, AMOUNT, TRANSACTION_DATE) VALUES (?, ?, ?, ?)";
+        System.out.println("Transaction ID: " + transaction.getId());
+        System.out.println("Account ID: " + transaction.getAccount().getId());
+        System.out.println("Transaction Type: " + transaction.getTransactionType());
+        System.out.println("Amount: " + transaction.getAmount());
+        System.out.println("Transaction Date: " + transaction.getTransactionDate());
+        System.out.println("Is Processed: " + transaction.isProcessed());
+        String sql = "INSERT INTO Transaction (ACCOUNT_ID, TRANSACTION_TYPE, AMOUNT, TRANSACTION_DATE, TRANSACTION_STATUS) VALUES (?, ?, ?, ?, ?)";
+
+
 
         jdbcTemplate.update(
                 sql,
                 transaction.getAccount().getId(),
                 transaction.getTransactionType().toString(),
                 transaction.getAmount(),
-                transaction.getTransactionDate()
+                transaction.getTransactionDate(),
+                transaction.isProcessed()
         );
     }
 }

@@ -12,5 +12,6 @@ CREATE TABLE Transaction (
                              transaction_type VARCHAR(10) NOT NULL,
                              amount DOUBLE NOT NULL,
                              transaction_date TIMESTAMP NOT NULL,
-                             FOREIGN KEY (account_id) REFERENCES Account(id)
+                             FOREIGN KEY (account_id) REFERENCES Account(id),
+                             transaction_status BOOLEAN NOT NULL
 );

@@ -33,7 +33,7 @@ public class TransactionWithdrawCLI {
                 System.out.println("It is not allowed to withdraw money from a FIXED account");
             }
             else {
-                    System.out.println("Bank account with the given account ID was not found. Please try again");
+                System.out.println("Bank account with the given account ID was not found. Please try again");
                 }
         }
     }

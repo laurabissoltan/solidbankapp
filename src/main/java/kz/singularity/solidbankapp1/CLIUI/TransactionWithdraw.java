@@ -30,6 +30,9 @@ public class TransactionWithdraw {
         transaction.setAccount(accountWithdraw);
         transaction.setAmount(amount);
         transaction.setTransactionDate(new Date());
+        if(accountWithdraw.getBalance() > amount) {
+            transaction.setProcessed(true);
+        }
 
         transactionDAO.addTransaction(transaction);
 

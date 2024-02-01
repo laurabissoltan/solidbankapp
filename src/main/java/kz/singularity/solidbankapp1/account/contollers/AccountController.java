@@ -9,6 +9,7 @@ import kz.singularity.solidbankapp1.transaction.dao.TransactionDAO;
 import kz.singularity.solidbankapp1.account.model.Account;
 import kz.singularity.solidbankapp1.account.model.AccountType;
 import kz.singularity.solidbankapp1.transaction.model.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class AccountController {
     private TransactionDAO transactionDAO;
     private TransactionWithdraw transactionWithdraw;
 
+    @Autowired
     public AccountController(AccountDAO accountDAO, BankCore bankCore, TransactionDeposit transactionDeposit, TransactionDAO transactionDAO, TransactionWithdraw transactionWithdraw) {
         this.accountDAO = accountDAO;
         this.bankCore = bankCore;
@@ -118,11 +120,11 @@ public class AccountController {
     }
 
     @GetMapping("/{account_id}/transactions")
-    public ResponseEntity<List<Transaction>> getTransactions(@PathVariable("account_id") String accountID) {
+    public ResponseEntity<Object> getTransactions(@PathVariable("account_id") String accountID) {
         List<Transaction> transactions = transactionDAO.getTransactions(accountID);
         if(transactions.isEmpty()) {
-            System.out.print("No transactions for account " + accountID +": ");
-            return new ResponseEntity<>(transactions, HttpStatus.NOT_FOUND);
+            String message = "No transactions for account " + accountID;
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         else {
             return new ResponseEntity<>(transactions, HttpStatus.OK);

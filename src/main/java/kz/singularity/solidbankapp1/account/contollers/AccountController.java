@@ -2,14 +2,13 @@ package kz.singularity.solidbankapp1.account.contollers;
 
 import kz.singularity.solidbankapp1.account.cliui.BankCore;
 import kz.singularity.solidbankapp1.account.dao.AccountDAO;
-import kz.singularity.solidbankapp1.account.model.AccountWithdraw;
 import kz.singularity.solidbankapp1.transaction.cliui.TransactionDeposit;
 import kz.singularity.solidbankapp1.transaction.cliui.TransactionWithdraw;
 import kz.singularity.solidbankapp1.transaction.dao.TransactionDAO;
 import kz.singularity.solidbankapp1.account.model.Account;
 import kz.singularity.solidbankapp1.account.model.AccountType;
 import kz.singularity.solidbankapp1.transaction.model.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/accounts")
 public class AccountController {
 
@@ -25,15 +25,6 @@ public class AccountController {
     private TransactionDeposit transactionDeposit;
     private TransactionDAO transactionDAO;
     private TransactionWithdraw transactionWithdraw;
-
-    @Autowired
-    public AccountController(AccountDAO accountDAO, BankCore bankCore, TransactionDeposit transactionDeposit, TransactionDAO transactionDAO, TransactionWithdraw transactionWithdraw) {
-        this.accountDAO = accountDAO;
-        this.bankCore = bankCore;
-        this.transactionDeposit = transactionDeposit;
-        this.transactionDAO = transactionDAO;
-        this.transactionWithdraw = transactionWithdraw;
-    }
 
     @GetMapping()
     public ResponseEntity<List<Account>> getAccounts() {

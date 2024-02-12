@@ -1,4 +1,7 @@
 package kz.singularity.solidbankapp1;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +13,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan
 @EnableJpaRepositories("kz.singularity.solidbankapp1")
 @SpringBootApplication
+@SecurityScheme(
+        name = "bearerAuth",
+        description = "JWT auth description",
+        scheme = "bearer",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        in = SecuritySchemeIn.HEADER
+)
 public class SolidBankApplication implements CommandLineRunner {
     @Autowired
     private ApplicationContext context;

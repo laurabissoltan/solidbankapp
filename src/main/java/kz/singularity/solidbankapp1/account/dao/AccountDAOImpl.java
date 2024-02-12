@@ -55,8 +55,7 @@ public class AccountDAOImpl implements AccountDAO {
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
-        Account foundAccount = accountRepository.findByClientIDAndId(clientID, accountID);
-        return foundAccount;
+        return accountRepository.findByClientIDAndId(clientID, accountID);
     }
 
     @Override
@@ -68,7 +67,6 @@ public class AccountDAOImpl implements AccountDAO {
     public Account getClientAccountById(String accountID) {
         return accountRepository.findById(accountID).orElse(null);
     }
-
 
 
 

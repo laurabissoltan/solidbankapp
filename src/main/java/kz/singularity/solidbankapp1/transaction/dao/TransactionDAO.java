@@ -15,6 +15,4 @@ public interface TransactionDAO {
 
     void deleteTransactions(String accountID);
 
-    //  public Transaction getTransactionByAccountID(String accountID);
-
 }

@@ -10,7 +10,6 @@ import java.util.List;
 public interface TransactionRepository extends CrudRepository<Transaction, String> {
 
     List<Transaction> findAll();
-
     List<Transaction> getTransactionByAccount_Id(String accountID);
 
 }

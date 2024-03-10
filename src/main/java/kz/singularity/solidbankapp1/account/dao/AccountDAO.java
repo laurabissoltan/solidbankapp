@@ -5,6 +5,7 @@ import kz.singularity.solidbankapp1.account.model.AccountType;
 import kz.singularity.solidbankapp1.account.model.AccountWithdraw;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AccountDAO {
  //   List<Account> getClientAccounts(String clientID);
@@ -20,7 +21,5 @@ public interface AccountDAO {
     Account getClientAccount(String clientID, String accountID);
 
     void deleteAccount(String accountID);
-
     Account getClientAccountById(String accountID);
-
 }

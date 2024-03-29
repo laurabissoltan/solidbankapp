@@ -3,9 +3,10 @@
 A small banking application using Spring annotations based on the SOLID principle and a UML class diagram. This application features account management, transaction processing, is secured with JWT (JSON Web Tokens) authentication, and is fully documented with Swagger for ease of use and collaboration.
 
 ### Getting started
-1. Open the project SolidBankApp-3
-2. Navigate to the src/main/java/kz/singularity/solidbankapp1 directory
-3. Run the main method in Solidbankapp1Application.java to start the program by executing the command mvn spring-boot:run in the project directory
+1. Clone the repository: git clone https://github.com/laurabissoltan/solidbankapp.git
+2. Open the project
+3. Navigate to the src/main/java/kz/singularity/solidbankapp1 directory
+4. Run the main method in Solidbankapp1Application.java to start the program by executing the command mvn spring-boot:run in the project directory
 
 ### Features
 
